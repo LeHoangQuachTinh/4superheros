@@ -14,12 +14,12 @@ public class Bai3 {
          int tong = num1 + num2;
          int hieu = num1 - num2;
          int tich = num1 * num2;
-         float thuong = 0;
+         double thuong = 0;
          int du = 0;
  
          // Kiểm tra chia cho 0
          if (num2 != 0) {
-            thuong = num1 / num2;
+            thuong = (double) num1 / num2;
             du = num1 % num2;
          } 
          else
@@ -32,7 +32,7 @@ public class Bai3 {
          
          if (num2 != 0) 
         {
-             System.out.println("Thương: " +thuong);
+             System.out.printf("Thương: %.2f\n", thuong);
              System.out.println("Phần dư: " +du);
         }
     }
