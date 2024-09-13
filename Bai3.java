@@ -14,7 +14,7 @@ public class Bai3 {
          int tong = num1 + num2;
          int hieu = num1 - num2;
          int tich = num1 * num2;
-         int thuong = 0;
+         float thuong = 0;
          int du = 0;
  
          // Kiểm tra chia cho 0
