@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package baitaptuan3;
+package baitaptuan4;
 
 import java.util.Scanner;
 
@@ -13,20 +13,26 @@ import java.util.Scanner;
 public class Bai4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap vao so a:");
-        int a= scanner.nextInt();
-        System.out.println("Nhap vao so b:");
-        int b= scanner.nextInt();
-        System.out.println("Nhap vao so c:");
-        int c= scanner.nextInt();
-        
-        int min=a;
-        if(b<min){
-            min=b;
+        System.out.print("Nhap vao mot so nguyen:");
+        int n = scanner.nextInt();
+        if (songuyento(n)) {
+            System.out.println(n + " la so nguyen to.");
+        } else {
+            System.out.println(n + " khong phai la so nguyen to.");
         }
-        if(c<min){
-            min=c;
+        scanner.close();
+    }
+    // Hàm kiểm tra số nguyên tố
+    public static boolean songuyento(int n) {
+        if (n < 2) {
+            return false;
         }
-        System.out.println("So nho nhat trong ba so la:" +min);
+        // Kiểm tra có chia hết cho 1 và chính nó
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false; 
+            }
+        }  
+        return true;
     }
 }

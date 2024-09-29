@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package baitaptuan3;
+package baitaptuan4;
 
-import java.util.Scanner;
 
 /**
  *
@@ -12,23 +11,11 @@ import java.util.Scanner;
  */
 public class Bai2 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap vao diem cua ban:");
-        double n = scanner.nextDouble();
-        if (n >= 0 && n <= 10) 
-        {
-        if(n>=8.5)
-            System.out.println("Gioi");
-        else
-            if(n>=6.5)
-                System.out.println("Kha");
-            else
-                if(n<6.5 && n>=3.5)
-                    System.out.println("Trung binh");
-                else
-                    System.out.println("Yeu");
-        }
-        else
-            System.out.println("Diem so khong the danh gia, hay nhap lai!");
-}
+       for(int i=1;i<=10;i++){
+           System.out.println("Bang cuu chuong cua " + i + ":");    
+           for(int j=1;j<=10;j++)
+               System.out.println(i + "*" +j+ "=" +(i*j));
+       }
+       System.out.println();
+    }
 }
