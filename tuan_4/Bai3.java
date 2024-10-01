@@ -13,17 +13,16 @@ import java.util.Scanner;
 public class Bai3 {
     public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-            int n ;
-            do
+            System.out.println("Nhap vao mot so nguyen duong:");
+            int n = scanner.nextInt();
+            if(n<0)
+                System.out.println("Yeu cap nhap lai so nguyen duong");
+            else 
             {
-                System.out.println("nhập số nguyên dương n:");
-                n=scanner.nextInt();
+                int giaithua = 1;
+                for(int i=1;i<=n;i++)
+                    giaithua = giaithua *i;
+                System.out.println("Giai thua cua so " +n+ " la: " +giaithua);
             }
-            while(n<0);
-            int giaithua = 1;
-            for(int i=1;i<=n;i++)
-                giaithua = giaithua *i;
-             System.out.println("Giai thua cua so " +n+ " la: " +giaithua);
-            
     }
 }
