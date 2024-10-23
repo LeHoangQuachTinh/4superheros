@@ -32,6 +32,7 @@ class NganHang{
         this.matkhau=MatKhauMoi;
         System.out.println("Mật khẩu mới của bạn là:"+this.matkhau);
     }
+    //quyền chỉnh cái này
     public boolean kiemtraMatKhau(String matkhau){
         return this.matkhau.equals(matkhau);
     }
