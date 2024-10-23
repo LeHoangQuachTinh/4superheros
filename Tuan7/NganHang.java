@@ -17,6 +17,7 @@ class NganHang{
     {
         this.stk=stk;
         this.chutk=chutk;
+        //quyền chỉnh cái này
         this.sodu=50000.0;
         this.matkhau=matkhau;
         this.maKhoiPhuc=maKhoiPhuc;
