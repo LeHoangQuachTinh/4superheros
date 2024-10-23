@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         String soTaiKhoan,matKhau,chuTaiKhoan,lc,matKhauMoi;
-        int soLanDangNhap=0,tt;
+        int tt;
         double tienGui,rutTien;
         Scanner scanner=new Scanner(System.in);
         DanhSach ds =new DanhSach();
@@ -36,6 +36,7 @@ public class main {
                     ds.themTaiKhoan(soTaiKhoan, tk);
                     break;
                 case "2":
+                    int soLanDangNhap=0;
                     boolean dangNhap=false;
                     do{
                         System.out.print("Nhập số tài khoản đăng nhập:");
@@ -55,6 +56,7 @@ public class main {
                                     System.out.println("1.Gửi tiền");
                                     System.out.println("2.Rút tiền");
                                     System.out.println("3.Đổi mật khẩu");
+                                    System.out.println("4.Kiểm tra số dư");
                                     System.out.println("Nhập một phím bất kỳ để đăng xuất tài khoản!");
                                     System.out.print("Nhập lựa chọn của bạn:");
                                     lc1=scanner.nextLine();
@@ -91,6 +93,9 @@ public class main {
                                             matKhauMoi=scanner.nextLine();
                                             tk1.doiMatKhau(matKhau, matKhauMoi);
                                             break;
+                                        case "4":
+                                            tk1.kiemTraSoDu();
+                                            break;
                                        default:
                                            break loop1;
                                            
@@ -124,7 +129,7 @@ public class main {
                     System.out.println("Kết thúc chương trình!");
                     return;
             } 
-            System.out.println("Bạn có muốn tiếp tục đăng nhập không? 1.Tiếp tục , 2.Dừng!");
+            System.out.println("Bạn có muốn tiếp tục không? 1.Tiếp tục , 2.Dừng!");
             System.out.print("Nhập lựa chọn của bạn:");
             tt=scanner.nextInt();
             scanner.nextLine();
