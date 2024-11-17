@@ -1,4 +1,4 @@
-package Tuan4;
+package tuan_4;
 import java.util.Scanner;
 public class bai6 {
     //cách 1

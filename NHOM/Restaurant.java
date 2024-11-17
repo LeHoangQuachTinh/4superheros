@@ -1,4 +1,8 @@
-class Restaurant extends Account implements IRestaurant {
+package NHOM;
+
+import java.util.Scanner;
+
+public class Restaurant extends Account implements IRestaurant {
 
 
     public Restaurant(String code,String username, String password, String SDT,String diachi) {
@@ -7,7 +11,7 @@ class Restaurant extends Account implements IRestaurant {
     }
 
     @Override
-    public void register() {
+    public void register(Scanner scanner,DSTaiKhoan dstk) {
         System.out.println("Registering restaurant...");
     }
 
