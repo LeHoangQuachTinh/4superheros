@@ -21,12 +21,6 @@ public class Customer extends Account implements IDish {
         menu = new ArrayList<>();
     }
 
-    // In thông tin người dùng
-    @Override
-    public void in() {
-        System.out.println("In thông tin người dùng!");
-        super.in(); // Gọi phương thức in từ lớp Account
-    }
 
     // Thêm món ăn vào danh sách menu (giả lập)
     public void menu_MonAn() {

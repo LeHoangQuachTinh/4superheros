@@ -27,7 +27,6 @@ class Restaurant extends Account implements IDish {
     }
 
 
-    @Override
     public void register() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'register'");

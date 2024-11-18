@@ -80,4 +80,9 @@ public class ListCustomer implements IListAccount {
     public void lockAccount() {
         // Thêm logic xử lý khóa tài khoản khách hàng (ví dụ: đánh dấu trạng thái khóa tài khoản)
     }
+    
+    //Kiểm tra tồn tại IdUser trong danh sách
+    public Account kiemTraTonTai(String idUser){
+        return listCustomer.get(idUser);
+    }
 }

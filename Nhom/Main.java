@@ -11,8 +11,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         ListRestaurant newRestaurant = new ListRestaurant();
         ListCustomer listCustomer = new ListCustomer();
-        Restaurant nhaHangHienTai = null; // Lưu trữ nhà hàng đang đăng nhập
-        Customer currentCustomer = null; // Lưu trữ khách hàng đang đăng nhập
+        Restaurant nhaHangHienTai = null;
+        Customer currentCustomer = null; 
         int choice;
 
         while (true) {
@@ -112,7 +112,7 @@ public class Main {
                                 }
                                 break;
 
-                            case 3: // Quên mật khẩu
+                            case 3: 
                                 if (nhaHangHienTai != null) {
                                     nhaHangHienTai.quenMatKhau();
                                 } else {
