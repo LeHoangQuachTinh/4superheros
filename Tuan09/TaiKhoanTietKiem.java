@@ -1,5 +1,5 @@
 
-package Tuan8;
+package Tuan9;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,16 +11,13 @@ import java.util.concurrent.TimeUnit;
 public class TaiKhoanTietKiem extends NganHang {
     private double laiSuat;
     public LocalDate currenDateTK;
-    public LocalDate thoihanDate;
-    private double sodu;
-    private int soThangGui=0;
-    private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private LocalDate thoihanDate;
+    private int soThangGui;
 
-    public double getSodu() {
-        return sodu;
-    }
+   
 
     TaiKhoanTietKiem() {
+        super();
         this.sodu = 0.0;
         this.currenDateTK = LocalDate.now();
     }
@@ -31,27 +28,24 @@ public class TaiKhoanTietKiem extends NganHang {
         this.sodu = 0.0;
         this.currenDateTK = LocalDate.now();
         this.thoihanDate=LocalDate.now();
-
+        this.soThangGui=0;
     }
 
     TaiKhoanTietKiem(String stk, String chutk, String matkhau, String maOTP, double laiSuat) 
     {
         super(stk, chutk, matkhau, maOTP);
         this.laiSuat = laiSuat;
+        this.sodu = 0.0;
         this.currenDateTK = LocalDate.now();
+        this.thoihanDate=LocalDate.now();
+        this.soThangGui=0;
     }
+   
     public int getSoThangGui(){
         return this.soThangGui;
     }
     public void setSoThangGui(int month)   {
         this.soThangGui=month;
-    }
-    public double getTienTietKiem() {
-        return this.sodu;
-    }
-
-    public void setTienTietKiem(double tienTietKiem) {
-        this.sodu = tienTietKiem;
     }
     public void tinhLai() 
     {
@@ -62,48 +56,14 @@ public class TaiKhoanTietKiem extends NganHang {
     public void setThoiHang(LocalDate thoihanDateNew){
         this.thoihanDate=thoihanDateNew;
     }
-
-    @Override
-    public void display() {
-        System.out.printf("TaiKhoanTietKiem (%-10s %-20s %-10.2f₫)\n", this.getStk()+"TK", chutk, this.sodu);
-    }
-    public void napTiep(double tien) {
-        if (tien >= 0) 
-        {
-            this.sodu += tien;
-            System.out.printf("\nNạp vào tài khoản tiết kiệm thành công: %.0f₫\n", tien);
-        } 
-        else 
-            System.out.println("\nSố tiền nạp không hợp lệ");
-        
-    }
-    public void rutTien(double rut) {
-        if (this.sodu >= rut) 
-        {
-            this.sodu -= rut;
-            System.out.printf("\nRút từ tài khoản tiết kiệm thành công: %.0f₫\n", rut);
-        } 
-        else 
-            System.out.println("\nSố tiền trong tài khoản tiết kiệm không đủ");
-        
-    }
     public void congTienLaiCoKyHan(int kihan) {
         switch (kihan) {
-            case 3:
-                this.laiSuat = 0.1;
-                break;
-            case 6:
-                this.laiSuat = 0.2;
-                break;
-            case 12:
-                this.laiSuat = 0.4;
-                break;
-            case 24:
-                this.laiSuat = 0.6;
-                break;
-            default:
+            case 3->this.laiSuat = 0.1;
+            case 6->this.laiSuat = 0.2;
+            case 12->this.laiSuat = 0.4;
+            case 24->this.laiSuat = 0.6;
+            default->
                 System.out.println("Kỳ hạn không hợp lệ!");
-                break;
         }
         this.tinhLai();
         this.thoihanDate = currenDateTK.plusMonths(kihan);
@@ -117,11 +77,44 @@ public class TaiKhoanTietKiem extends NganHang {
             return true;
         return false;
     }
-
     public void tienLaiHangNgay() {
-        scheduler.schedule(() -> {
+        this.scheduler.schedule(() -> {
             this.sodu+= this.sodu * 0.001;
             System.out.println("Số dư sau khi cộng lãi hằng ngày: " + this.sodu);
         }, 1, TimeUnit.DAYS);
     } 
+    @Override
+    public double getSodu() {
+        return sodu;
+    }
+    @Override void setSodu(double soduNew){
+        this.sodu=soduNew;
+    }
+    @Override
+    public void display() {
+        System.out.printf("TaiKhoanTietKiem (%-10s %-10s %-10.2f₫ %20s)\n", this.stk+"TK", chutk, this.sodu,this.isLocked?"Bị khoá":"Bình thường");
+    }
+    @Override
+    public void napTiep(double tien) {
+        if (tien >= 0) 
+        {
+            this.sodu += tien;
+            System.out.printf("\nNạp vào tài khoản tiết kiệm thành công: %.0f₫\n", tien);
+        } 
+        else 
+            System.out.println("\nSố tiền nạp không hợp lệ");
+        
+    }
+    @Override
+    public void rutTien(double rut) {
+        if (this.sodu >= rut) 
+        {
+            this.sodu -= rut;
+            System.out.printf("\nRút từ tài khoản tiết kiệm thành công: %.0f₫\n", rut);
+        } 
+        else 
+            System.out.println("\nSố tiền trong tài khoản tiết kiệm không đủ");
+        
+    }
+    
 }
