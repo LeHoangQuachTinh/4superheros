@@ -9,12 +9,10 @@ import java.util.List;
 import java.util.Scanner;
 
 class Restaurant extends Account implements IDish {
-
     private String chuNhaHang;
-
-    private List<Dish> menu;
     private double doanhThu;
-    Scanner sc = new Scanner(System.in);
+    public List<Dish> menu;
+
 
     public Restaurant( String password, String SDT, String diachi, String idNhaHang,String tenNhaHang) {
         super(idNhaHang, tenNhaHang, password, SDT, diachi);
@@ -25,12 +23,7 @@ class Restaurant extends Account implements IDish {
     public double getDoanhThu() {
         return doanhThu;
     }
-
-
-    public void register() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'register'");
-    }
+    
 
     @Override
     public void addDish() {
@@ -150,87 +143,10 @@ class Restaurant extends Account implements IDish {
             System.out.println("Không tìm thấy mã món ăn trong menu.");
     }
 
-    @Override
     public void xemDoanhThu() {
         System.out.println("Doanh thu: "+doanhThu);
     }
 
-    @Override
-    public void updateThongTinNhaHang() {
-        int choice;
-        do {
-            System.out.println("=====Cập nhật thông tin nhà hàng=====");
-            System.out.println("""
-                    1.Cập nhật tên nhà hàng
-                    2.Cập nhật địa chỉ nhà hàng
-                    3.Cập nhật số điện thoại nhà hàng
-                    4.Thoát
-                    """);
-            
-            System.out.println("Nhập lựa chọn của bạn: ");
-            choice = sc.nextInt();
-            sc.nextLine();
-            
-            switch (choice){
-                case 1:
-                //Đổi tên nhà hàng
-                    System.out.println("Nhập tên nhà hàng mới: ");
-                    String newRestaurant = sc.nextLine();
-                    if(!newRestaurant.isEmpty()){
-                        if(newRestaurant.equals(tenNhaHang)){
-                            System.out.println("Tên nhà hàng mới trùng với tên nhà hàng cũ!. Không có thay đổi nào được thực hiện!");
-                        }
-                        else{
-                            this.tenNhaHang=newRestaurant;
-                        System.out.println("Tên nhà hàng đã được cập nhật: "+this.tenNhaHang);
-                        }
-                    }
-                    else
-                        System.out.println("Tên nhà hàng chưa được cập nhật.");
-                break;
-                case 2:
-                //Đổi địa chỉ nhà hàng
-                    System.out.println("Nhập địa chỉ mới của nhà hàng: ");
-                    String newAdress = sc.nextLine();
-                    if(!newAdress.isEmpty()){
-                        if(newAdress.equals(diachi)){
-                            System.out.println("Địa nhà hàng mới trùng với địa chỉ nhà hàng cũ!. Không có thay đổi nào được thực hiện!");
-                        }
-                        else{
-                            this.setDiachi(newAdress);
-                            System.out.println("Địa chỉ đã cập nhật thành công: "+this.diachi);
-                        }
-                    }
-                    else
-                        System.out.println("Địa chỉ chưa được cập nhật");
-                break;
-                case 3:
-                //Đổi số điện thoại
-                    System.out.println("Nhập số điện thoại mới: ");
-                    String newSdt = sc.nextLine();
-                    if(!newSdt.isEmpty()){
-                        if(newSdt.equals(sdt)){
-                            System.out.println("Số điện thoại mới trùng với số điện thoại cũ! Không có sự thay đổi nào được thực hiện!");
-                        }
-                        else{
-                            this.setSDT(newSdt);
-                            System.out.println("Số điện thoại đã được cập nhật: "+this.SDT);
-                        }
-                    }
-                    else
-                        System.out.println("Số điện thoại chưa được cập nhật");
-                break;
-                case 4:
-                //Thoát chương trình
-                    System.out.println("Thoát cập nhật!");
-                break;
-                default:
-                    System.out.println("Lựa chọn không hợp lệ. Vui lòng thử lại.");
-            }
-        } while (choice != 4);
-    }
-
-    @Override
     public void updateMenu() {
         int choice;
         do{
@@ -278,5 +194,11 @@ class Restaurant extends Account implements IDish {
             System.out.println("--------------------------------------------------------------------------------");
         }
     }
-
+    public void congDoanhThu(double doanhThu){
+        this.doanhThu+=doanhThu;
+    }
+    @Override
+    public void lockAccount(){
+        this.isLocked=true;
+    }
 }

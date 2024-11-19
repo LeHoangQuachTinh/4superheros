@@ -8,63 +8,69 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Customer extends Account implements IDish {
-    private List<OrDer> orders; // Danh sách các đơn hàng đã đặt
-    private List<Dish> gioHang; // Giỏ hàng của khách hàng
-    private List<Dish> menu; // Menu món ăn của nhà hàng
-
-    // Constructor
-    public Customer(String code, String username, String password, String SDT, String diachi) {
-        super(code, username, password, SDT, diachi);
-        orders = new ArrayList<>();
-        gioHang = new ArrayList<>();
-        menu = new ArrayList<>();
+class Customer extends Account implements IDish {
+    private List<OrDer> orders;
+    private List<Dish> gioHang;
+    private List<Dish> menu;
+    
+    public Customer(String code,String username, String password, String SDT,String diachi) {
+        super(code,username, password, SDT,diachi);
+        orders =new ArrayList<>();
+        gioHang=new ArrayList<>();
+        menu=new ArrayList<>();
     }
 
 
-    // Thêm món ăn vào danh sách menu (giả lập)
-    public void menu_MonAn() {
-        menu.add(new Dish("MA0001", "Phở bò", 50000, 5));
-        menu.add(new Dish("MA0002", "Bánh mì thịt", 25000, 6));
-        menu.add(new Dish("MA0003", "Gà rán", 60000, 7));
-        menu.add(new Dish("MA0004", "Bún chả", 45000, 8));
-        menu.add(new Dish("MA0005", "Nem rán", 30000, 9));
-        menu.add(new Dish("MA0006", "Cơm tấm sườn bì chả", 40000, 5));
-        menu.add(new Dish("MA0007", "Lẩu thái", 150000, 4));
-        menu.add(new Dish("MA0008", "Bún bò Huế", 50000, 3));
-        menu.add(new Dish("MA0009", "Hủ tiếu Nam Vang", 45000, 2));
-        menu.add(new Dish("MA0010", "Mì Quảng", 40000, 1));
-        menu.add(new Dish("MA0011", "Chả cá Lã Vọng", 120000, 10));
-        menu.add(new Dish("MA0012", "Xôi gà", 30000, 9));
-        menu.add(new Dish("MA0013", "Canh chua cá lóc", 80000, 8));
-        menu.add(new Dish("MA0014", "Sườn xào chua ngọt", 90000, 7));
-        menu.add(new Dish("MA0015", "Bánh xèo", 35000, 6));
+    //in thông tin người dùng
+    @Override
+    public void in() {
+        System.out.println("In thông tin người dùng!");
+        super.in(); 
     }
+    
+    //thêm món ăn vào danh sách menu
+    // public void menu_MonAn() {
+    //     menu.add(new Dish("1","Phở bò", 50000, 5));
+    //     menu.add(new Dish("2","Bánh mì thịt", 25000, 6));
+    //     menu.add(new Dish("3","Gà rán", 60000, 7));
+    //     menu.add(new Dish("4","Bún chả", 45000, 8));
+    //     menu.add(new Dish("5","Nem rán", 30000, 9));
+    //     menu.add(new Dish("6","Cơm tấm sườn bì chả", 40000, 5));
+    //     menu.add(new Dish("7","Lẩu thái", 150000, 4));
+    //     menu.add(new Dish("8","Bún bò Huế", 50000, 3));
+    //     menu.add(new Dish("9","Hủ tiếu Nam Vang", 45000, 2));
+    //     menu.add(new Dish("10","Mì Quảng", 40000, 1));
+    //     menu.add(new Dish("11","Chả cá Lã Vọng", 120000, 10));
+    //     menu.add(new Dish("12","Xôi gà", 30000, 9));
+    //     menu.add(new Dish("13","Canh chua cá lóc", 80000, 8));
+    //     menu.add(new Dish("14","Sườn xào chua ngọt", 90000, 7));
+    //     menu.add(new Dish("15","Bánh xèo", 35000, 6));
+    // }
 
-    // Hiển thị menu món ăn
-    public void hienThiMonAn() {
-        System.out.println("Danh sách món ăn:");
+    //hiển thị menu món ăn
+    public void hienThiMonAn(){
+        System.out.println("Danh sách món ăn!");
         for (int i = 0; i < menu.size(); i++) {
             Dish mon = menu.get(i);
-            System.out.println((i + 1) + ". " + mon.getNameDish() + " - " + mon.getPrice() + " VND");
+            System.out.println((i + 1) + ". " + mon.getTenMon() + " - " + mon.getGia() + " VND");
         }
     }
-
+    
     // Thêm món ăn vào giỏ hàng
     public void themMonAnVaoGioHang(String tenMon, int soLuong) {
         for (Dish mon : menu) {
-            if (mon.getNameDish().equalsIgnoreCase(tenMon)) {
+            if (mon.getTenMon().equalsIgnoreCase(tenMon)) {
                 boolean daCo = false;
                 for (Dish monGioHang : gioHang) {
-                    if (monGioHang.getNameDish().equalsIgnoreCase(tenMon)) {
-                        monGioHang.setQuality(monGioHang.getQuality() + soLuong); // Cập nhật số lượng món ăn trong giỏ
-                        System.out.println("Đã thêm " + soLuong + " " + tenMon + " vào giỏ hàng.");
+                    if (monGioHang.getTenMon().equalsIgnoreCase(tenMon)) {
+                        monGioHang.soLuong += soLuong;
+                        System.out.println("Đã thêm! Món:"+tenMon  +" ||số lượng:" +soLuong + " " +  " vào giỏ hàng.");
                         daCo = true;
                         break;
                     }
                 }
                 if (!daCo) {
-                    Dish monMoi = new Dish(mon.getIdDish(), mon.getNameDish(), mon.getPrice(), soLuong);
+                    Dish monMoi = new Dish(tenMon, mon.getGia(), soLuong);
                     gioHang.add(monMoi);
                     System.out.println("Đã thêm " + soLuong + " " + tenMon + " vào giỏ hàng.");
                 }
@@ -73,64 +79,72 @@ public class Customer extends Account implements IDish {
         }
         System.out.println("Món ăn " + tenMon + " không có trong menu.");
     }
-
-    // Tính tổng tiền trong giỏ hàng
-    public double tinhTongTienGioHang() {
-        if (gioHang.isEmpty()) {
+    
+    // tính tổng tiền trong giỏ hàng 
+    public double tinhTongTienGioHang(){
+        if (gioHang.isEmpty()) 
             System.out.println("Giỏ hàng của bạn đang trống!");
-        } else {
+            
+        else {
             System.out.println("Giỏ hàng của bạn:");
             double tongTien = 0;
             for (Dish mon : gioHang) {
                 System.out.println(mon);
-                tongTien += mon.getPrice() * mon.getQuality(); // Tính tổng tiền
+                tongTien += mon.gia * mon.soLuong; 
             }
             System.out.println("Tổng tiền: " + tongTien + " VND");
             return tongTien;
         }
         return 0.0;
     }
-
-    // Đặt hàng
+    
+    //Đặt hàng
     @Override
     public void placeOrder() {
-        if (!gioHang.isEmpty()) {
-            String orderId = "ORDER" + System.currentTimeMillis(); // Tạo ID đơn hàng ngẫu nhiên
-            OrDer newOrder = new OrDer(orderId, gioHang); // Tạo đơn hàng
-            orders.add(newOrder); // Thêm vào danh sách đơn hàng của khách hàng
-            System.out.println("Đơn hàng đã được tạo thành công!");
-            System.out.println(newOrder);
-            gioHang.clear(); // Xóa giỏ hàng sau khi đặt hàng thành công
-        } else {
-            System.out.println("Giỏ hàng trống. Không thể đặt hàng.");
-        }
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.print("Nhập mã sản phẩm: ");
+//        String productId = scanner.nextLine();
+//        System.out.print("Nhập tên sản phẩm: ");
+//        String productName = scanner.nextLine();
+//        System.out.print("Nhập số lượng: ");
+//        int quantity = scanner.nextInt();
+//        scanner.nextLine();
+//        String orderId = random(8); 
+//        OrDer newOrder = new OrDer(orderId, productName, quantity);
+//        orders.add(newOrder); 
+//        System.out.println("Đơn hàng đã được tạo thành công!");
+//        System.out.println(newOrder);
     }
 
-    // Xem trạng thái đơn hàng
+    //Xem trạng thái đặt hàng
     @Override
     public void viewOrderStatus() {
         if (orders.isEmpty()) {
             System.out.println("Bạn chưa có đơn hàng nào.");
-        } else {
+        } 
+        else {
             for (OrDer order : orders) {
                 System.out.println(order);
             }
         }
     }
-
-    // Các phương thức của IDish, mặc dù không thực hiện trong Customer nhưng yêu cầu có mặt.
+    //Thêm sửa xoá ni làm trong phần giỏ hàng
     @Override
-    public void addDish() {
-        // Implement method if necessary
-    }
+    public void addDish(){
 
-    @Override
-    public void editDish() {
-        // Implement method if necessary
     }
+    @Override
+    public void editDish(){
 
-    @Override
-    public void deleteDish() {
-        // Implement method if necessary
     }
+    @Override
+    public void deleteDish(){
+
+    }
+    
+    @Override
+    public void lockAccount(){
+        this.isLocked=true;
+    }
+    
 }
