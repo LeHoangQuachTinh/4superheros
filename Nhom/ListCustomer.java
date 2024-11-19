@@ -20,11 +20,10 @@ public class ListCustomer implements IListAccount{
         this.listCustomer=new HashMap<>();
     }
 
-    @Override
-    public void editAccount() {
-        // TODO Auto-generated method stub
-        
-    }
+    /**
+     *
+     */
+
     @Override
     public void lockAccount(String matk) {
         if(listCustomer.get(matk)!=null)
@@ -157,4 +156,59 @@ public class ListCustomer implements IListAccount{
     public Account kiemTraTonTai(String idUser){
         return listCustomer.get(idUser);
     }
+    
+    @Override
+    public void editAccount() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Nhập ID khách hàng cần chỉnh sửa: ");
+    String id = scanner.nextLine();
+
+    Customer customer = listCustomer.get(id);
+    if (customer == null) {
+        System.out.println("Không tìm thấy khách hàng!");
+        return;
+    }
+
+    System.out.println("Chọn thông tin cần chỉnh sửa:");
+    System.out.println("1. Tên người dùng");
+    System.out.println("2. Số điện thoại");
+    System.out.println("3. Địa chỉ");
+    System.out.println("4. Mật khẩu");
+    System.out.print("Nhập lựa chọn của bạn: ");
+    int choice = scanner.nextInt();
+    scanner.nextLine(); // Đọc bỏ dòng trống
+
+    switch (choice) {
+        case 1:
+            System.out.print("Nhập tên người dùng mới: ");
+            customer.username = scanner.nextLine();
+            System.out.println("Tên người dùng đã được cập nhật!");
+            break;
+        case 2:
+            System.out.print("Nhập số điện thoại mới: ");
+            customer.SDT = scanner.nextLine();
+            System.out.println("Số điện thoại đã được cập nhật!");
+            break;
+        case 3:
+            System.out.print("Nhập địa chỉ mới: ");
+            customer.diachi = scanner.nextLine();
+            System.out.println("Địa chỉ đã được cập nhật!");
+            break;
+        case 4:
+            System.out.print("Nhập mật khẩu mới: ");
+            String newPassword;
+            do {
+                newPassword = scanner.nextLine();
+                if (!kiemTraMatKhauManh(newPassword)) {
+                    System.out.println("Mật khẩu không hợp lệ! Nhập lại: ");
+                }
+            } while (!kiemTraMatKhauManh(newPassword));
+            customer.password = newPassword;
+            System.out.println("Mật khẩu đã được cập nhật!");
+            break;
+        default:
+            System.out.println("Lựa chọn không hợp lệ!");
+    }
+}
+
 }
