@@ -143,6 +143,7 @@ class Restaurant extends Account implements IDish {
             System.out.println("Không tìm thấy mã món ăn trong menu.");
     }
 
+    @Override
     public void xemDoanhThu() {
         System.out.println("Doanh thu: "+doanhThu);
     }
