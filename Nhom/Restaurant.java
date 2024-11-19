@@ -12,9 +12,10 @@ class Restaurant extends Account implements IDish {
     private String chuNhaHang;
     private double doanhThu;
     public List<Dish> menu;
+    private String tenNhaHang;
 
 
-    public Restaurant( String password, String SDT, String diachi, String idNhaHang,String tenNhaHang) {
+    public Restaurant( String password, String SDT, String diachi, String idNhaHang, String tenNhaHang, String chuNhaHang1) {
         super(idNhaHang, tenNhaHang, password, SDT, diachi);
         this.menu = new ArrayList<>();
         this.doanhThu = 0.0;
@@ -24,8 +25,6 @@ class Restaurant extends Account implements IDish {
         return doanhThu;
     }
     
-
-    @Override
     public void addDish() {
        String maMon, tenMon;
        double price;
@@ -82,7 +81,6 @@ class Restaurant extends Account implements IDish {
        } while (true);
     }
 
-    @Override
     public void editDish() {
         System.out.println("Nhập mã món ăn: ");
         String maMonAn = sc.nextLine();
@@ -120,7 +118,6 @@ class Restaurant extends Account implements IDish {
         }
     }
 
-    @Override
     public void deleteDish() {
         System.out.println("Nhập mã món cần xóa: ");
         String maMon = sc.nextLine();
@@ -143,7 +140,6 @@ class Restaurant extends Account implements IDish {
             System.out.println("Không tìm thấy mã món ăn trong menu.");
     }
 
-    @Override
     public void xemDoanhThu() {
         System.out.println("Doanh thu: "+doanhThu);
     }
@@ -201,5 +197,24 @@ class Restaurant extends Account implements IDish {
     @Override
     public void lockAccount(){
         this.isLocked=true;
+    }
+
+    void updateThongTinNhaHang() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void addDish(Dish mon) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void deleteDish(String tenMon) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void editDish(String tenMon, int soLuong) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

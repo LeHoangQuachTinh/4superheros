@@ -9,5 +9,5 @@ public interface IListAccount {
     boolean login();
     void editAccount();
     void forgotPassWord();
-    void lockAccount();
-}
+    void lockAccount(String matk);
+} 

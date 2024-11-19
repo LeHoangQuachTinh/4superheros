@@ -5,45 +5,71 @@
 package order_online;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
-public class ListCustomer implements IListAccount {
-    private HashMap<String, Customer> listCustomer;  
+import java.util.stream.Collectors;
+public class ListCustomer implements IListAccount{
+    private HashMap<String,Customer> listCustomer;
 
-    ListCustomer() {
-        this.listCustomer = new HashMap<>();
+    public HashMap<String, Customer> getListCustomer() {
+        return listCustomer;
     }
 
-    // Phương thức đăng ký tài khoản khách hàng
+    ListCustomer(){
+        this.listCustomer=new HashMap<>();
+    }
+
     @Override
-    public void registerAccount() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập ID khách hàng: ");
-        String id = sc.nextLine();
-
-        // Kiểm tra nếu khách hàng đã tồn tại
-        if (listCustomer.containsKey(id)) {
-            System.out.println("Khách hàng đã tồn tại!");
-            return;
-        }
-
-        // Nhập thông tin khách hàng
-        System.out.println("Nhập tên khách hàng: ");
-        String name = sc.nextLine();
-        System.out.println("Nhập mật khẩu: ");
-        String password = sc.nextLine();
-        System.out.println("Nhập số điện thoại: ");
-        String phone = sc.nextLine();
-        System.out.println("Nhập địa chỉ: ");
-        String address = sc.nextLine();
-
-        // Tạo đối tượng Customer và thêm vào danh sách
-        Customer newCustomer = new Customer(id, name, password, phone, address);
-        listCustomer.put(id, newCustomer);
-        System.out.println("Đăng ký khách hàng thành công!");
+    public void editAccount() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void lockAccount(String matk) {
+        if(listCustomer.get(matk)!=null)
+            listCustomer.get(matk).isLocked=true;
+        else
+             System.out.println("Không tìm thấy tài khoản!\n");
     }
 
-    // Phương thức đăng nhập khách hàng
+    @Override
+    public void forgotPassWord() {
+        Scanner sc=new Scanner(System.in);
+        // System.out.println("Nhập số điện thoại đã đăng kí với tài khoản của bạn: ");
+        // String sdtNhap = sc.nextLine();
+        System.out.println("Nhập mã khách hàng đã đăng kí:");
+        String maKH=sc.nextLine();
+
+        Customer customer=listCustomer.get(maKH);
+        if(customer!=null){
+            //Tạo mã OTP
+            Random rand = new Random();
+            int otp = 100000 + rand.nextInt(999999);
+            System.out.println("Mã OTP của bạn là: "+otp);
+
+            //Nhập OTP xác nhận
+            System.out.println("Vui lòng nhập mã OTP để xác nhận");
+            int otpNhap = sc.nextInt();
+
+            if(otpNhap==otp){
+                System.out.println("Mã OTP chính xác!");
+                sc.nextLine();
+                
+                //Đổi mật khẩu
+                System.out.println("Nhập mật khẩu mới: ");
+                String newPassword = sc.nextLine();
+                // this.password = newPassword;
+                customer.password=newPassword;
+                System.out.println("Mật khẩu của bạn đã được thay đổi thành công!");
+            }
+            else
+                System.out.println("Mã OTP không chính xác! Vui lòng thử lại.");
+        }
+        else
+            System.out.println("Không tìm thấy tài khoản!\n");
+    }
+
     @Override
     public boolean login() {
         Scanner sc = new Scanner(System.in);
@@ -67,18 +93,64 @@ public class ListCustomer implements IListAccount {
     }
 
     @Override
-    public void editAccount() {
-        // Thêm logic chỉnh sửa thông tin khách hàng ở đây (ví dụ: cập nhật tên, số điện thoại, địa chỉ)
+    public void registerAccount() {
+         Scanner scanner =new Scanner(System.in);
+         String idUser;
+        do{
+            System.out.print("Nhập IdUser:");
+            idUser=scanner.nextLine();
+            if(listCustomer.containsKey(idUser)){
+                System.out.println("Mã code đã tồn tại trong hệ thống!Nhập lại!");
+            }
+        }
+        while(listCustomer.containsKey(idUser));
+        System.out.print("Nhập username:");
+        String username=scanner.nextLine();
+
+        System.out.print("Nhập số điện thoại đăng kí:");
+        String SDT=scanner.nextLine();
+
+        System.out.print("Nhập địa chỉ:");
+        String diachi=scanner.nextLine();
+        Random random = new Random();
+        String soOTP= random.ints(6, 0, 9)
+                            .mapToObj(String::valueOf)
+                            .collect(Collectors.joining());;
+        System.out.println("Mã otp của bạn là:"+soOTP);
+        String otp ;
+        do{
+            System.out.print("Nhập mã otp:");
+            otp=scanner.nextLine();
+            if(!otp.equals(soOTP))
+                System.out.println("Số otp không khớp!Vui lòng nhập lại!");
+        }
+        while(!otp.equals(soOTP));
+        String password;
+        do{
+            System.out.print("Tạo mật khẩu([A-Z]&&[a-z]&&[0-9]&&kí tự đăc biệt&&đủ 5 kí tự):");
+            password=scanner.nextLine();
+            if(!kiemTraMatKhauManh(password))
+                System.out.println("Mật khẩu không hợp lệ!");
+        }
+        while(!kiemTraMatKhauManh(password));
+        Customer tkCustomer=new Customer(true, idUser, username, password, SDT, diachi);
+        listCustomer.put(idUser, tkCustomer);
+
     }
 
-    @Override
-    public void forgotPassWord() {
-        // Thêm logic xử lý quên mật khẩu cho khách hàng (ví dụ: yêu cầu xác nhận email, số điện thoại, v.v.)
-    }
     
-    @Override
-    public void lockAccount() {
-        // Thêm logic xử lý khóa tài khoản khách hàng (ví dụ: đánh dấu trạng thái khóa tài khoản)
+    public Customer search(String maCustomer){
+        return listCustomer.get(maCustomer);
+    }
+    //Ràng buộc mật khẩu
+    public boolean kiemTraMatKhauManh(String matkhau) {
+        if (matkhau.length() >= 5 
+            &&matkhau.matches(".*[A-Z].*") 
+            &&  matkhau.matches(".*[a-z].*")
+            &&matkhau.matches(".*\\d.*") 
+            && matkhau.matches(".*[!@#$%^&*()].*")) 
+            return true;  
+        return false;
     }
     
     //Kiểm tra tồn tại IdUser trong danh sách

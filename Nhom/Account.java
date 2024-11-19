@@ -130,4 +130,14 @@ abstract class Account {
     }
     abstract void lockAccount();
 
+    public void in() {
+        System.out.println("---------------------------------------------");
+        System.out.println("Thông tin tài khoản:");
+        System.out.println("ID người dùng: " + idUser);
+        System.out.println("Tên người dùng: " + username);
+        System.out.println("Số điện thoại: " + SDT);
+        System.out.println("Địa chỉ: " + diachi);
+        System.out.println("---------------------------------------------");
+    }
 }
+
