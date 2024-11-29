@@ -1,0 +1,25 @@
+# Mã nhà hàng, Tên nhà hàng
+NH001,Nhà Hàng A,tinh,A123,033333333,48 Cao Thắng
+
+# Danh sách món ăn: Tên món, Giá, Số lượng
+1;Phở;30000;20
+2;Bún Bò;40000;15
+3;Mì Quảng;20000;10
+
+
+NH002,Nhà Hàng B,quan,B123,033333333,10 Ông Ích Khiêm
+
+4;Cơm Tấm;35000;10
+5;Hủ Tiếu;25000;30
+6;Mỳ Tôm;5000;20
+
+NH003,Nhà Hàng C,quyen,C123,033333333,10 Trần Cao Vân
+7;Bánh Xèo;45000;25
+8;Bánh Bột Lọc;10000;30
+
+NH004,Nhà Hàng D,truong,D123,033333333,50 Hà Huy Tập
+
+9;Bánh Canh;40000;20
+10;Chả Cá;50000;10
+11;Trà sữa trân châu đường đen;30000;50
+12;Trà Chanh;15000;20
