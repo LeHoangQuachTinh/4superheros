@@ -1,0 +1,36 @@
+# Mã nhà hàng, Tên nhà hàng
+RES001,Nhà Hàng Bé Trường-SuperPink,truong,A123,033333333,48 Cao Thắng,11111
+
+# Danh sách món ăn: Tên món, Giá, Số lượng
+1;Phở;30000;20
+2;Bún Bò;40000;15
+3;Mì Quảng;20000;10
+
+
+NH002,Nhà Hàng Anh Quân-SuperRed,quan,B123,033333333,10 Ông Ích Khiêm,22222
+
+4;Cơm Tấm;35000;10
+5;Hủ Tiếu;25000;30
+6;Mỳ Tôm;5000;20
+
+RES003,Nhà Hàng Em Quyền-SuperBlue,quyen,C123,033333333,10 Trần Cao Vân,33333
+
+7;Bánh Xèo;45000;25
+8;Bánh Bột Lọc;10000;30
+
+RES004,Nhà Hàng Em Tỉnh-SuperGreen,tinh,D123,033333333,50 Hà Huy Tập,44444
+
+9;Bánh Canh;40000;20
+10;Chả Cá;50000;10
+11;Trà sữa trân châu đường đen;30000;50
+12;Trà Chanh;15000;20
+
+#Danh sách tài khoản khách hàng
+CUS001:Cu Tỉnh:Abc123#:0111111111:259 Trần Cao Vân:55555
+CUS002:Cu Quân:Abc123#:0222222222:12 Ông Ích Khiêm:66666
+CUS003:Cu Quyền:Abc123#:0333333333:20 Hải Phòng:77777
+
+#Danh sách tài khoản người giao hàng
+SHI001|Em Tỉnh|Abc123$|0555555555|15 Lê Duẩn|88888
+SHI002|Em Trường|Abc123$|0666666666|15 Lê Duẩn|99999
+SHI003|Em Quyền|Abc123$|077777777|15 Lê Duẩn|00000
