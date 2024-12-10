@@ -1,0 +1,56 @@
+
+Danh sách tài khoản nhà hàng
+
+Mã tài khoản:RES004
+Tên tài khoản:Nhà Hàng Em Tỉnh-SuperGreen
+Mật khẩu:D123
+SĐT:033333333
+
+Mã tài khoản:RES003
+Tên tài khoản:Nhà Hàng Em Quyền-SuperBlue
+Mật khẩu:C123
+SĐT:033333333
+
+Mã tài khoản:RES002
+Tên tài khoản:Nhà Hàng Anh Quân-SuperRed
+Mật khẩu:B123
+SĐT:033333333
+
+Mã tài khoản:RES001
+Tên tài khoản:Nhà Hàng Bé Trường-SuperPink
+Mật khẩu:A123
+SĐT:033333333
+
+Danh sách tài khoản khách hàng
+
+Mã tài khoản:CUS001
+Tên tài khoản:Cu Tỉnh
+Mật khẩu:Abc123#
+SĐT:0111111111
+
+Mã tài khoản:CUS002
+Tên tài khoản:Cu Quân
+Mật khẩu:Abc123#
+SĐT:0222222222
+
+Mã tài khoản:CUS003
+Tên tài khoản:Cu Quyền
+Mật khẩu:Abc123#
+SĐT:0333333333
+
+Danh sách tài khoản shipper
+
+Mã tài khoản:SHI002
+Tên tài khoản:Em Trường
+Mật khẩu:Abc123$
+SĐT:0666666666
+
+Mã tài khoản:SHI003
+Tên tài khoản:Em Quyền
+Mật khẩu:Abc123$
+SĐT:077777777
+
+Mã tài khoản:SHI001
+Tên tài khoản:Em Tỉnh
+Mật khẩu:Abc123$
+SĐT:0555555555
